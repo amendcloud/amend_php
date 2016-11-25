@@ -75,7 +75,7 @@
             return $img;
         }
 		
-        function upload($file_bytes){
+		function upload($file_bytes, $name){
 			if(self::$amendName==""){
 				$resp = array();
 				$resp['StatusCode']=400;
@@ -100,7 +100,7 @@
             
 			$base64 = base64_encode($file_bytes);
             $url = self::BASE_URL.self::$amendName.'/upload';
-            $data = array('ImageBase64' => $base64);
+            $data = array('ImageBase64' => $base64, 'ImageName'=>$name);
             $data_string=json_encode($data);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -119,7 +119,8 @@
             $response = curl_exec($ch);
             $resp = json_decode($response, true);
             return $resp;
-        }
+		}
+		
     }
 
     class Options{
