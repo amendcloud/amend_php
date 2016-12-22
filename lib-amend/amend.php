@@ -1,5 +1,5 @@
 <?php 
-    $IMAGE_ID = "ImageId";
+    $IMAGE_NAME = "ImageName";
     $MESSAGE = "Message";
 
     class Amend{
@@ -101,6 +101,120 @@
 			$base64 = base64_encode($file_bytes);
             $url = self::BASE_URL.self::$amendName.'/upload';
             $data = array('ImageBase64' => $base64, 'ImageName'=>$name);
+            $data_string=json_encode($data);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch,CURLOPT_VERBOSE, TRUE);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$data_string);
+
+            curl_setopt($ch, CURLINFO_HEADER_OUT, TRUE);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',$headerAccessKey,$headerAccessSecret
+					
+            ));
+
+            $response = curl_exec($ch);
+            $resp = json_decode($response, true);
+            return $resp;
+		}
+		
+		function rename($imageName, $newName){
+			if(self::$amendName==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="Amend name required";
+				return $resp;
+			}
+			if(self::$accessKey==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="Amend key required";
+				return $resp;
+			}
+			if(self::$accessSecret==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="Amend secret required";
+				return $resp;
+			}
+			
+			if($imageName==null || $imageName==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="imageName required";
+				return $resp;
+			}
+			
+			if($newName==null || $newName==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="newName required";
+				return $resp;
+			}
+			$headerAccessKey='AccessKey:'.self::$accessKey;
+			$headerAccessSecret='AccessSecret:'.self::$accessSecret;
+			
+            
+			
+            $url = self::BASE_URL.self::$amendName.'/rename';
+            $data = array('NewName' => $newName, 'ImageName'=>$imageName);
+            $data_string=json_encode($data);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch,CURLOPT_VERBOSE, TRUE);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$data_string);
+
+            curl_setopt($ch, CURLINFO_HEADER_OUT, TRUE);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',$headerAccessKey,$headerAccessSecret
+					
+            ));
+
+            $response = curl_exec($ch);
+            $resp = json_decode($response, true);
+            return $resp;
+		}
+		
+		function destroy($imageName){
+			if(self::$amendName==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="Amend name required";
+				return $resp;
+			}
+			if(self::$accessKey==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="Amend key required";
+				return $resp;
+			}
+			if(self::$accessSecret==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="Amend secret required";
+				return $resp;
+			}
+			
+			if($imageName==null || $imageName==""){
+				$resp = array();
+				$resp['StatusCode']=400;
+				$resp['Message']="imageName required";
+				return $resp;
+			}
+			
+			$headerAccessKey='AccessKey:'.self::$accessKey;
+			$headerAccessSecret='AccessSecret:'.self::$accessSecret;
+			
+            
+			
+            $url = self::BASE_URL.self::$amendName.'/destroy';
+            $data = array('ImageName'=>$imageName);
             $data_string=json_encode($data);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
