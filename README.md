@@ -111,7 +111,7 @@ Another example, emedding a smaller version of an uploaded image while generatin
 Additional resources are available at:
 
 * [Website](http://amendcloud.com)
-* [Documentation](http://amendcloud.com/documentation.html)
+* [Documentation](http://amendcloud.com/docs)
 
 ## Support
 
