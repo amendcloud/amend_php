@@ -1,13 +1,12 @@
 Amend
 ==========
 
-amend is a cloud-based service that provides an end-to-end image management solution including uploads, storage, manipulations, optimizations and delivery.
 
-With amend you can easily upload images to the cloud, automatically perform smart image manipulations without installing any complex software. All your images are then seamlessly delivered through a fast CDN, optimized and using industry best practices. amend offers comprehensive APIs and administration capabilities and is easy to integrate with new and existing web and mobile applications.
+Amend is a Platform–as-a-Service (PaaS) solution hosted on cloud. Amend helps you manage your application’s image resources in the cloud without having to worry about scale and performance. The resources are delivered by high-performance servers through Content Delivery Network (CDN).
 
-amend offers comprehensive APIs and administration capabilities and is easy to integrate with any web application, existing or new.
+Resources are uploaded, managed, and transformed using amend’s easy to use APIs and SDKs. Infrastructure used for these operations is infinitely scalable for handling high load and bursts of traffic.
 
-amend provides URL and HTTP based APIs that can be easily integrated with any Web development framework. 
+Amend provides URL based APIs and SDKS that can be easily integrated with any Web or Mobile development framework. 
 
 For projects based on PHP Framework, amend provides a library for simplifying the integration even further.
 
@@ -28,27 +27,27 @@ amend Android library is available at [http://amendcloud.com/library/amend_php.z
 
 Sign up for a [free account](http://developer.amendcloud.com/Register) so you can try out image transformations and seamless image delivery through CDN.
 
-*Note: Replace `demo` in all the following examples with your amend's `amend name`.*  
+*Note: Replace `test` in all the following examples with your amend's `amend name`.*  
 
-Accessing an uploaded image with the `pc` public ID through a CDN:
+Accessing an uploaded image with the `baby` public ID through a CDN:
 
-    http://amend.cloud/demo/image/pc.jpg
+    http://amend.cloud/test/image/baby
 
-![Sample](http://amend.cloud/demo/image/w_300/pc.jpg "Sample")
+![Sample](http://amend.cloud/test/image/w_300/baby "baby")
 
-Generating a 150x100 version of the `pc` image and downloading it through a CDN:
+Generating a 150x100 version of the `baby` image and downloading it through a CDN:
 
-    http://amend.cloud/demo/image/w_150,h_100,fit_fill/pc.jpg
+    http://amend.cloud/test/image/w_150,h_100,fit_fill/baby
 
-![Sample 150x100](http://amend.cloud/demo/image/w_150,h_100,fit_fill/pc.jpg "Sample 150x100")
+![Sample 150x100](http://amend.cloud/test/image/w_150,h_100,fit_fill/baby "baby 150x100")
 
 Converting to a 150x100 PNG with rounded corners of 25 pixels: 
 
-    http://amend.cloud/demo/image/w_150,h_100,fit_fill/r_25/pc.jpg
+    http://amend.cloud/test/image/w_150,h_100,fit_fill/r_25/baby
 
-![Sample 150x150 Rounded PNG](http://amend.cloud/demo/image/w_150,h_100,fit_fill/r_25/pc.jpg "Sample 150x150 Rounded PNG")
+![Sample 150x150 Rounded PNG](http://amend.cloud/test/image/w_150,h_100,fit_fill/r_25/baby "baby 150x150 Rounded PNG")
 
-For plenty more transformation options, see our [image transformations documentation](http://amend.com/documentation/image_transformations).
+For plenty more transformation options, see our [image transformations documentation](http://amendcloud.com/docs/image_transformation).
  
 ## Usage
 
@@ -95,10 +94,10 @@ You can also specify your own Image Name:
 
 Any image uploaded to amend can be transformed and embedded using powerful view helper methods:
 
-The following example generates the url for accessing an uploaded `pc` image while transforming it to fill a 100x150 rectangle and set on ImageView img
+The following example generates the url for accessing an uploaded `baby` image while transforming it to fill a 100x150 rectangle and set on ImageView img
 
 	$amendOptions = array('transform'=>array('width'=>100','height'=>150,'fit'=>Amend::FIT_FILL));
-	echo Amend::load('pc', $amendOptions);
+	echo Amend::load('baby', $amendOptions);
 
 Another example, emedding a smaller version of an uploaded image while generating a 90x90 face detection based thumbnail: 
 
@@ -115,6 +114,6 @@ Additional resources are available at:
 
 ## Support
 
-Contact us at [support@amendcloud.com](mailto:support@amendcloud.com)
+Contact us at [support@amend.cloud](mailto:support@amend.cloud)
 
 Or via Twitter: [@amend](https://twitter.com/#!/amendcloud)
